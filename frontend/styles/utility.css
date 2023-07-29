@@ -1,0 +1,237 @@
+@font-face {
+    font-family: "Blackpast";
+    src: url(../assets/fonts/Blackpast.ttf);
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url(../assets/fonts/Tajawal-ExtraLight.ttf);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url(../assets/fonts/Tajawal-Light.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url(../assets/fonts/Tajawal-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url(../assets/fonts/Tajawal-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url(../assets/fonts/Tajawal-Bold.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url(../assets/fonts/Tajawal-ExtraBold.ttf);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: "Tajawal";
+    src: url(../assets/fonts/Tajawal-Black.ttf);
+    font-weight: 900;
+}
+
+:root {
+    --white: #ffffffff;
+    --antiflash-white: #ebebebff;
+    --silver: #c0c0c0ff;
+    --medium-grey: #808080;
+    --bice-blue: #3a6ea5ff;
+    --polynesian-blue: #004e98ff;
+    --prussian-blue: #003459ff;
+    --blackpast: "Blackpast";
+    --tajawal: "Tajawal";
+}
+
+html {
+    font-size: 16px;
+}
+
+/* Fonts */
+
+.blackpast {
+    font-family: var(--blackpast);
+}
+
+.tajawal-200 {
+    font-family: var(--tajawal);
+    font-weight: 200;
+}
+
+.tajawal-300 {
+    font-family: var(--tajawal);
+    font-weight: 300;
+}
+
+.tajawal-400 {
+    font-family: var(--tajawal);
+    font-weight: 400;
+}
+
+.tajawal-500 {
+    font-family: var(--tajawal);
+    font-weight: 500;
+}
+
+.tajawal-700 {
+    font-family: var(--tajawal);
+    font-weight: 700;
+}
+
+.tajawal-800 {
+    font-family: var(--tajawal);
+    font-weight: 800;
+}
+
+.tajawal-900 {
+    font-family: var(--tajawal);
+    font-weight: 900;
+}
+
+.font-xxxl {
+    font-size: 4rem;
+}
+
+.font-xxl {
+    font-size: 3.5rem;
+}
+
+.font-xl {
+    font-size: 3rem;
+}
+
+.font-lg {
+    font-size: 2.5rem;
+}
+
+.font-md {
+    font-size: 2rem;
+}
+
+.font-sm {
+    font-size: 1.5rem;
+}
+
+.font-xs {
+    font-size: 1rem;
+}
+
+/* Colors */
+
+.color-white {
+    color: var(--white);
+}
+
+.color-antiflash-white {
+    color: var(--antiflash-white);
+}
+
+.color-silver {
+    color: var(--silver);
+}
+
+.color-medium-grey {
+    color: var(--medium-grey);
+}
+
+.color-bice-blue {
+    color: var(--bice-blue);
+}
+
+.color-polynesian-blue {
+    color: var(--polynesian-blue);
+}
+
+.color-prussian-blue {
+    color: var(--prussian-blue);
+}
+
+/* Background Colors */
+
+.bg-color-white {
+    background-color: var(--white);
+}
+
+.bg-color-antiflash-white {
+    background-color: var(--antiflash-white);
+}
+
+.bg-color-silver {
+    background-color: var(--silver);
+}
+
+.bg-color-medium-grey {
+    background-color: var(--medium-grey);
+}
+
+.bg-color-bice-blue {
+    background-color: var(--bice-blue);
+}
+
+.bg-color-polynesian-blue {
+    background-color: var(--polynesian-blue);
+}
+
+.bg-color-prussian-blue {
+    background-color: var(--prussian-blue);
+}
+
+/* Flex */
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-start {
+    justify-content: start;
+}
+
+.justify-end {
+    justify-content: end;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-start {
+    align-items: start;
+}
+
+.align-end {
+    align-items: end;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
