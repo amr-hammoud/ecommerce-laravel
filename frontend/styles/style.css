@@ -91,8 +91,31 @@ body {
     height: 2000px;
 }
 
-main {
+head, main, footer {
     width: 100%;
+}
+
+/* Navbar */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5rem;
+}
+
+nav .tab {
+    background-color: #ffffff4e;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.6rem;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Hero Section */

@@ -46,6 +46,7 @@
 }
 
 :root {
+    --black: #000000;
     --white: #ffffffff;
     --antiflash-white: #ebebebff;
     --silver: #c0c0c0ff;
@@ -136,6 +137,10 @@ html {
     color: var(--white);
 }
 
+.color-black {
+    color: var(--black);
+}
+
 .color-antiflash-white {
     color: var(--antiflash-white);
 }
@@ -164,6 +169,10 @@ html {
 
 .bg-color-white {
     background-color: var(--white);
+}
+
+.bg-color-black {
+    background-color: var(--black);
 }
 
 .bg-color-antiflash-white {
@@ -234,4 +243,24 @@ html {
 
 .flex-grow {
     flex-grow: 1;
+}
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.gap-1-5 {
+    gap: 1.5rem;
+}
+
+.gap-2 {
+    gap: 2rem;
+}
+
+.gap-2-5 {
+    gap: 2.5rem;
+}
+
+.gap-3 {
+    gap: 3rem;
 }
