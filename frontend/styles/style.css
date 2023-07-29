@@ -118,6 +118,14 @@ nav .tab {
     cursor: pointer;
 }
 
+nav .tab:hover {
+    background-color: #ffffff96;
+}
+
+nav .tab:active {
+    background-color: #ffffffda;
+}
+
 /* Hero Section */
 .hero-section {
     background-image: url("../assets/images/hero-background.jpg");
