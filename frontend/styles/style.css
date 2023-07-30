@@ -271,6 +271,7 @@ nav .tab:active {
 .card-face {
     opacity: 1;
     transition: opacity .2s ease-in-out;
+    z-index: 4;
 }
 
 .face-img {
@@ -333,7 +334,6 @@ nav .tab:active {
     top: 0;
     opacity: 0;
     transition: opacity .2s ease-in-out;
-    height: 100%;
 }
 
 .back-details .details {
