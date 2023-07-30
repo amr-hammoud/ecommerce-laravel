@@ -101,12 +101,16 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 5;
+}
+
+nav .main{
     height: 80px;
     opacity: 0.85;
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
-    z-index: 5;
+    
 }
 
 nav .logo {
@@ -479,4 +483,70 @@ nav .tab:active {
 .account-status-container a{
     text-decoration: underline;
     font-weight: 600;
+}
+
+
+.cart-tab {
+    padding: 5px 3px;
+    background-color: var(--antiflash-white);
+    color: var(--prussian-blue);
+    position: absolute;
+    right: 100px;
+    top: 70px;
+    border-radius: 10px;
+    width: 400px;
+    display: none;
+    max-height: 240px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.cart-tab-item {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 100px;
+}
+
+.cart-img {
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.cart-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.cart-details {
+    width: 100%;
+    padding: 5px 5px 5px 10px;
+}
+
+.cart-details .name {
+    font-family: "Cairo";
+    font-weight: 800;
+    color: var(--prussian-blue);
+    font-size: 2rem;
+    line-height: 100%;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cart-details .price {
+    font-family: "Cairo";
+    font-weight: 500;
+    color: var(--bice-blue);
+    font-size: 1rem;
+}
+
+.cart-actions img {
+    cursor: pointer;
 }
