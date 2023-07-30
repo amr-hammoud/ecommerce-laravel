@@ -10,39 +10,37 @@ localStorage.setItem("favorites", JSON.stringify(favorites));
 let cart = [];
 localStorage.setItem("cart", JSON.stringify(cart));
 
-// Add to Cart
-const add_to_cart = document.getElementById("add-to-cart");
+function addButtonListeners(element, type) {
+	if (type === "f") {
+		element.addEventListener("mouseover", () => {
+			element.src = "assets/icons/filled/favorite.svg";
+		});
 
-add_to_cart.addEventListener("mouseover", () => {
-	add_to_cart.src = "assets/icons/filled/shopping_cart.svg";
-});
+		element.addEventListener("mouseout", () => {
+			element.src = "assets/icons/black/heart_plus.svg";
+		});
 
-add_to_cart.addEventListener("mouseout", () => {
-	add_to_cart.src = "assets/icons/black/add_shopping_cart.svg";
-});
+		element.addEventListener("click", (e) => {
+			favorites.push(e.target.parentElement.id);
+			localStorage.setItem("favorites", JSON.stringify(favorites));
+			updateCount(type);
+		});
+	} else if (type === "c") {
+		element.addEventListener("mouseover", () => {
+			element.src = "assets/icons/filled/shopping_cart.svg";
+		});
 
-add_to_cart.addEventListener("click", (e) => {
-	cart.push(e.target.parentElement.id);
-	localStorage.setItem("cart", JSON.stringify(cart));
-	updateCount("c");
-});
+		element.addEventListener("mouseout", () => {
+			element.src = "assets/icons/black/add_shopping_cart.svg";
+		});
 
-// Add To Favorites
-const add_to_favorites = document.getElementById("add-to-favorites");
-
-add_to_favorites.addEventListener("mouseover", () => {
-	add_to_favorites.src = "assets/icons/filled/favorite.svg";
-});
-
-add_to_favorites.addEventListener("mouseout", () => {
-	add_to_favorites.src = "assets/icons/black/heart_plus.svg";
-});
-
-add_to_favorites.addEventListener("click", (e) => {
-	favorites.push(e.target.parentElement.id);
-	localStorage.setItem("favorites", JSON.stringify(favorites));
-	updateCount("f");
-});
+		element.addEventListener("click", (e) => {
+			cart.push(e.target.parentElement.id);
+			localStorage.setItem("cart", JSON.stringify(cart));
+			updateCount(type);
+		});
+	}
+}
 
 function updateCount(type) {
 	let count_text;
@@ -57,3 +55,24 @@ function updateCount(type) {
 
 	count_text.innerText = count;
 }
+
+let product_list = [];
+
+function addCard(product) {
+	let card = document.createElement("div");
+	card.classList.add("product-card");
+	card.innerHTML = product.toCardContent();
+
+	const add_to_favorites = card.querySelector(".add-to-favorites");
+	const add_to_cart = card.querySelector(".add-to-cart");
+
+	addButtonListeners(add_to_favorites, "f");
+	addButtonListeners(add_to_cart, "c");
+
+	let products_container = document.getElementById("products");
+	products_container.appendChild(card);
+}
+
+product_list.forEach((product) => {
+	addCard(product)
+})
