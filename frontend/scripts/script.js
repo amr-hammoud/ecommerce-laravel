@@ -13,7 +13,7 @@ cart_button.addEventListener("click", () => {
 	}
 });
 
-let cart,favorites,products_list;
+let cart, favorites, products_list;
 
 products_list = [];
 localStorage.setItem("products", JSON.stringify(products_list));
@@ -48,16 +48,15 @@ function addButtonListeners(element, type) {
 
 		element.addEventListener("click", (e) => {
 			const id = e.target.parentElement.id;
-			product = findProduct(id)
-			
-			if (product != -1){
+			product = findProduct(id);
+
+			if (product != -1) {
 				// updateLocalStorageArray(product,"cart","push")
 				cart.push(id);
 				localStorage.setItem("cart", JSON.stringify(cart));
 				addCartItem(product);
 				updateCount(type);
 			}
-			
 		});
 	} else if (type === "dc") {
 		element.addEventListener("mouseover", () => {
@@ -69,14 +68,14 @@ function addButtonListeners(element, type) {
 		});
 
 		element.addEventListener("click", (e) => {
-			const id = e.target.id
+			const id = e.target.id;
 			const index = cart.indexOf(id);
 			if (index != -1) {
 				cart.splice(index, 1);
 				localStorage.setItem("cart", JSON.stringify(cart));
-				e.srcElement.parentElement.parentElement.remove()
+				e.srcElement.parentElement.parentElement.remove();
 				let count = updateCount(type);
-				if(count == 0) {
+				if (count == 0) {
 					cart_tab.classList.remove("show");
 				}
 			}
@@ -95,7 +94,7 @@ function updateCount(type) {
 		count = JSON.parse(localStorage.getItem("cart")).length;
 	}
 	count_text.innerText = count;
-	return count
+	return count;
 }
 
 function addCard(product) {
@@ -116,7 +115,7 @@ function addCard(product) {
 function addCartItem(product) {
 	let card = document.createElement("div");
 	card.classList.add("cart-tab-item");
-	card.innerHTML = product.toCartRowContent();
+	card.innerHTML = product.toUserRowContent();
 
 	const remove_from_cart = card.querySelector(".remove-from-cart");
 
@@ -126,42 +125,64 @@ function addCartItem(product) {
 	cart_container.appendChild(card);
 }
 
-function populateCards(){
+function populateCards() {
 	products_list.forEach((product) => {
 		addCard(product);
 	});
 }
 
-function populateCart(list){
+function populateCart(list) {
 	cart.forEach((id) => {
 		list.forEach((product) => {
-			if(product.id == id){
-				addCartItem(product)
+			if (product.id == id) {
+				addCartItem(product);
 			}
-		})
-	})
+		});
+	});
 }
 
+products_list.push(
+	new Product(
+		"11",
+		"MSI",
+		"250",
+		"lorem ipsum",
+		"Laptops",
+		"assets/images/laptop.png"
+	)
+);
+products_list.push(
+	new Product(
+		"12",
+		"HP",
+		"250",
+		"lorem ipsum",
+		"Laptops",
+		"assets/images/laptop.png"
+	)
+);
+products_list.push(
+	new Product(
+		"13",
+		"APPLE",
+		"250",
+		"lorem ipsum",
+		"Laptops",
+		"assets/images/laptop.png"
+	)
+);
+populateCards();
 
-products_list.push(new Product("11","MSI","250","lorem ipsum","Laptops","assets/images/laptop.png"))
-products_list.push(new Product("12","HP","250","lorem ipsum","Laptops","assets/images/laptop.png"))
-products_list.push(new Product("13","APPLE","250","lorem ipsum","Laptops","assets/images/laptop.png"))
-populateCards()
-
-
-
-
-if(localStorage.getItem("favorites") === null){
+if (localStorage.getItem("favorites") === null) {
 	let favorites = [];
 	localStorage.setItem("favorites", JSON.stringify(favorites));
 }
 
-if(localStorage.getItem("cart") === null){
+if (localStorage.getItem("cart") === null) {
 	let cart = [];
 	localStorage.setItem("cart", JSON.stringify(cart));
-}
-else{
-	cart = JSON.parse(localStorage.getItem("cart"))
-	populateCart(products_list)
-	updateCount("c")
+} else {
+	cart = JSON.parse(localStorage.getItem("cart"));
+	populateCart(products_list);
+	updateCount("c");
 }

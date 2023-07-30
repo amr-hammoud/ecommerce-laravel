@@ -36,7 +36,7 @@ class Product {
                 `
     }
 
-    toCartRowContent(){
+    toUserRowContent(){
         return `<div class="cart-img">
                     <img src="${this.image}" alt="product image">
                 </div>
