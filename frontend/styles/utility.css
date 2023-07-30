@@ -4,44 +4,44 @@
 }
 
 @font-face {
-    font-family: "Tajawal";
-    src: url(../assets/fonts/Tajawal-ExtraLight.ttf);
+    font-family: "Cairo";
+    src: url(../assets/fonts/Cairo-ExtraLight.ttf);
     font-weight: 200;
 }
 
 @font-face {
-    font-family: "Tajawal";
-    src: url(../assets/fonts/Tajawal-Light.ttf);
+    font-family: "Cairo";
+    src: url(../assets/fonts/Cairo-Light.ttf);
     font-weight: 300;
 }
 
 @font-face {
-    font-family: "Tajawal";
-    src: url(../assets/fonts/Tajawal-Regular.ttf);
+    font-family: "Cairo";
+    src: url(../assets/fonts/Cairo-Regular.ttf);
     font-weight: 400;
 }
 
 @font-face {
-    font-family: "Tajawal";
-    src: url(../assets/fonts/Tajawal-Medium.ttf);
+    font-family: "Cairo";
+    src: url(../assets/fonts/Cairo-Medium.ttf);
     font-weight: 500;
 }
 
 @font-face {
-    font-family: "Tajawal";
-    src: url(../assets/fonts/Tajawal-Bold.ttf);
+    font-family: "Cairo";
+    src: url(../assets/fonts/Cairo-Bold.ttf);
     font-weight: 700;
 }
 
 @font-face {
-    font-family: "Tajawal";
-    src: url(../assets/fonts/Tajawal-ExtraBold.ttf);
+    font-family: "Cairo";
+    src: url(../assets/fonts/Cairo-ExtraBold.ttf);
     font-weight: 800;
 }
 
 @font-face {
-    font-family: "Tajawal";
-    src: url(../assets/fonts/Tajawal-Black.ttf);
+    font-family: "Cairo";
+    src: url(../assets/fonts/Cairo-Black.ttf);
     font-weight: 900;
 }
 
@@ -55,7 +55,7 @@
     --polynesian-blue: #004e98ff;
     --prussian-blue: #003459ff;
     --blackpast: "Blackpast";
-    --tajawal: "Tajawal";
+    --cairo: "Cairo";
 }
 
 html {
@@ -68,38 +68,38 @@ html {
     font-family: var(--blackpast);
 }
 
-.tajawal-200 {
-    font-family: var(--tajawal);
+.cairo-200 {
+    font-family: var(--cairo);
     font-weight: 200;
 }
 
-.tajawal-300 {
-    font-family: var(--tajawal);
+.cairo-300 {
+    font-family: var(--cairo);
     font-weight: 300;
 }
 
-.tajawal-400 {
-    font-family: var(--tajawal);
+.cairo-400 {
+    font-family: var(--cairo);
     font-weight: 400;
 }
 
-.tajawal-500 {
-    font-family: var(--tajawal);
+.cairo-500 {
+    font-family: var(--cairo);
     font-weight: 500;
 }
 
-.tajawal-700 {
-    font-family: var(--tajawal);
+.cairo-700 {
+    font-family: var(--cairo);
     font-weight: 700;
 }
 
-.tajawal-800 {
-    font-family: var(--tajawal);
+.cairo-800 {
+    font-family: var(--cairo);
     font-weight: 800;
 }
 
-.tajawal-900 {
-    font-family: var(--tajawal);
+.cairo-900 {
+    font-family: var(--cairo);
     font-weight: 900;
 }
 
