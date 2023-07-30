@@ -1,8 +1,16 @@
 const account_button = document.getElementById("account-button");
 const account_tab = document.getElementById("account-tab");
-
 account_button.addEventListener("click", () => {
 	account_tab.classList.toggle("show");
+});
+
+const cart_button = document.getElementById("cart-button");
+const cart_tab = document.getElementById("cart-tab");
+cart_button.addEventListener("click", () => {
+	const count = cart_button.querySelector("span").innerText;
+	if (count != "0") {
+		cart_tab.classList.toggle("show");
+	}
 });
 
 let favorites = [];
@@ -23,7 +31,7 @@ function addButtonListeners(element, type) {
 		element.addEventListener("click", (e) => {
 			favorites.push(e.target.parentElement.id);
 			localStorage.setItem("favorites", JSON.stringify(favorites));
-			updateCount(type);
+			updateCount(type); // TODO: replace with addItem to list
 		});
 	} else if (type === "c") {
 		element.addEventListener("mouseover", () => {
@@ -35,9 +43,38 @@ function addButtonListeners(element, type) {
 		});
 
 		element.addEventListener("click", (e) => {
-			cart.push(e.target.parentElement.id);
-			localStorage.setItem("cart", JSON.stringify(cart));
-			updateCount(type);
+			const id = e.target.parentElement.id;
+			product = findProduct(id)
+			
+			if (product != -1){
+				cart.push(id);
+				localStorage.setItem("cart", JSON.stringify(cart));
+				addCartItem(product);
+				updateCount(type);
+			}
+			
+		});
+	} else if (type === "dc") {
+		element.addEventListener("mouseover", () => {
+			element.src = "assets/icons/filled/delete.svg";
+		});
+
+		element.addEventListener("mouseout", () => {
+			element.src = "assets/icons/black/delete.svg";
+		});
+
+		element.addEventListener("click", (e) => {
+			const id = e.target.id
+			const index = cart.indexOf(id);
+			if (index != -1) {
+				cart.splice(index, 1);
+				localStorage.setItem("cart", JSON.stringify(cart));
+				e.srcElement.parentElement.parentElement.remove()
+				let count = updateCount(type);
+				if(count == 0) {
+					cart_tab.classList.remove("show");
+				}
+			}
 		});
 	}
 }
@@ -45,15 +82,15 @@ function addButtonListeners(element, type) {
 function updateCount(type) {
 	let count_text;
 	let count = 0;
-	if (type === "f") {
+	if (type === "f" || type === "df") {
 		count_text = document.getElementById("favorites-count");
 		count = JSON.parse(localStorage.getItem("favorites")).length;
-	} else if (type === "c") {
+	} else if (type === "c" || type === "dc") {
 		count_text = document.getElementById("cart-count");
 		count = JSON.parse(localStorage.getItem("cart")).length;
 	}
-
 	count_text.innerText = count;
+	return count
 }
 
 let product_list = [];
@@ -73,6 +110,33 @@ function addCard(product) {
 	products_container.appendChild(card);
 }
 
-product_list.forEach((product) => {
-	addCard(product)
-})
+function addCartItem(product) {
+	let card = document.createElement("div");
+	card.classList.add("cart-tab-item");
+	card.innerHTML = product.toCartRowContent();
+
+	const remove_from_cart = card.querySelector(".remove-from-cart");
+
+	addButtonListeners(remove_from_cart, "dc");
+
+	let cart_container = document.getElementById("cart-tab");
+	cart_container.appendChild(card);
+}
+
+function populateCards(){
+	product_list.forEach((product) => {
+		addCard(product);
+	});
+}
+
+
+product_list.push(new Product("11","MSI","250","lorem ipsum","Laptops","assets/images/laptop.png"))
+product_list.push(new Product("12","HP","250","lorem ipsum","Laptops","assets/images/laptop.png"))
+product_list.push(new Product("13","APPLE","250","lorem ipsum","Laptops","assets/images/laptop.png"))
+populateCards()
+
+
+function findProduct(id) {
+	return product_list.find((product) => product.id == id);
+}
+
