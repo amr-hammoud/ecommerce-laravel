@@ -92,10 +92,6 @@ html {
     font-family: "Cairo";
 }
 
-body {
-    height: 2000px;
-}
-
 
 
 /* Navbar */
@@ -110,6 +106,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
+    z-index: 5;
 }
 
 nav .logo {
@@ -153,6 +150,16 @@ nav .tab:active {
     margin-top: 2rem;
 }
 
+.background-blur {
+    background-image: url("../assets/images/hero-background.jpg");
+    background-position: 50% 70%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    filter: blur(5px);
+}
+
 /* Responsive Text */
 
 /* Extra small devices (phones, 600px and down) */
@@ -166,7 +173,7 @@ nav .tab:active {
         font-size: 2rem;
         margin-top: 10rem;
     }
-    
+
     .hero-sub-heading {
         font-size: 1.5rem;
         margin-top: 1rem;
@@ -184,7 +191,7 @@ nav .tab:active {
         font-size: 3rem;
         margin-top: 10rem;
     }
-    
+
     .hero-sub-heading {
         font-size: 2rem;
         margin-top: 1.5rem;
@@ -201,7 +208,7 @@ nav .tab:active {
     .hero-heading {
         font-size: 4rem;
     }
-    
+
     .hero-sub-heading {
         font-size: 2.5rem;
         margin-top: 1.5rem;
@@ -214,7 +221,7 @@ nav .tab:active {
     .hero-heading {
         font-size: 5rem;
     }
-    
+
     .hero-sub-heading {
         font-size: 3rem;
         margin-top: 1.5rem;
@@ -228,7 +235,7 @@ nav .tab:active {
         font-size: 6rem;
         margin-top: 8rem;
     }
-    
+
     .hero-sub-heading {
         font-size: 4rem;
         margin-top: 1.5rem;
@@ -242,7 +249,7 @@ nav .tab:active {
         font-size: 7rem;
         margin-top: 7rem;
     }
-    
+
     .hero-sub-heading {
         font-size: 5rem;
         margin-top: 1.5rem;
@@ -281,18 +288,20 @@ nav .tab:active {
     object-position: center;
 }
 
-.face-details, .back-details {
+.face-details,
+.back-details {
     padding: 1rem;
 }
 
-.face-details .category{
+.face-details .category {
     font-family: "Cairo";
     font-weight: 400;
     color: var(--medium-grey);
     font-size: 1rem;
 }
 
-.face-details .name, .card-back .name{
+.face-details .name,
+.card-back .name {
     font-family: "Cairo";
     font-weight: 800;
     color: var(--prussian-blue);
@@ -304,7 +313,7 @@ nav .tab:active {
     text-overflow: ellipsis;
 }
 
-.face-details .price{
+.face-details .price {
     font-family: "Cairo";
     font-weight: 500;
     color: var(--bice-blue);
@@ -329,15 +338,101 @@ nav .tab:active {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 13;
-    -webkit-box-orient: vertical;  
+    -webkit-box-orient: vertical;
 }
 
-.product-card:hover .card-face{
+.product-card:hover .card-face {
     opacity: 0;
     transition: opacity .2s ease-in-out;
 }
 
-.product-card:hover .card-back{
+.product-card:hover .card-back {
     opacity: 1;
     transition: opacity .2s ease-in-out;
-} 
+}
+
+
+.account-tab {
+    padding: 5px 10px;
+    background-color: var(--antiflash-white);
+    color: var(--prussian-blue);
+    position: absolute;
+    right: 50px;
+    top: 70px;
+}
+
+.account-tab a {
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+}
+
+
+.signup-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    height: 100%;
+    width: 100%;
+    padding: 0 30px;
+}
+
+.signup-form {
+    background-color: #ffffff9c;
+    padding: 10px 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.signup-heading {
+    font-size: 5rem;
+}
+
+.input-group {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.input-group label {
+    color: var(--prussian-blue);
+    font-weight: 700;
+}
+
+.input-group input {
+    height: 60px;
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 1.3rem;
+    color: var(--prussian-blue);
+    font-weight: 400;
+    outline: none;
+    border: none;
+}
+
+.input-group input:focus {
+    outline: none;
+    border: none;
+}
+
+.input-group input::placeholder {
+    color: var(--silver);
+}
+
+.input-group button {
+    height: 60px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px 10px;
+    font-size: 1.3rem;
+    background-color: var(--prussian-blue);
+    color: var(--white);
+    font-family: "blackpast";
+    outline: none;
+    border: none;
+}
