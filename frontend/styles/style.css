@@ -262,7 +262,7 @@ nav .tab:active {
     margin: 1rem;
     background-color: var(--antiflash-white);
     width: 300px;
-    height: 400px;
+    height: 420px;
     border-radius: 20px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
     position: relative;
@@ -320,6 +320,14 @@ nav .tab:active {
     font-size: 1rem;
 }
 
+.face-actions {
+    height: 20px;
+    padding-right:25px;
+    margin-bottom: 10px;
+    opacity: 1;
+    transition: opacity .2s ease-in-out;
+}
+
 .card-back {
     position: absolute;
     top: 0;
@@ -337,7 +345,7 @@ nav .tab:active {
     text-align: justify;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 13;
+    -webkit-line-clamp: 12;
     -webkit-box-orient: vertical;
 }
 
