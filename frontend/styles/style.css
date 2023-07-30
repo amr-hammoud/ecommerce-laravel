@@ -24,14 +24,16 @@ body {
 }
 
 html,
-body {
+body,
+head,
+main,
+footer {
     padding: 0;
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+
 
 img,
 picture,
@@ -91,9 +93,7 @@ body {
     height: 2000px;
 }
 
-head, main, footer {
-    width: 100%;
-}
+
 
 /* Navbar */
 
@@ -103,17 +103,21 @@ nav {
     left: 0;
     width: 100%;
     height: 80px;
-
+    opacity: 0.85;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5rem;
+    padding: 0 40px;
+}
+
+nav .logo {
+    font-size: 2rem;
 }
 
 nav .tab {
     background-color: #ffffff4e;
     width: fit-content;
     height: fit-content;
-    padding: 0.6rem;
+    padding: 8px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -145,3 +149,96 @@ nav .tab:active {
     font-size: 4rem;
     margin-top: 2rem;
 }
+
+/* Responsive Text */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 450px) {
+
+    nav .logo {
+        font-size: 1rem;
+    }
+
+    .hero-heading {
+        font-size: 2rem;
+    }
+    
+    .hero-sub-heading {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+    }
+}
+
+
+@media only screen and (min-width: 450px) {
+
+    nav .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero-heading {
+        font-size: 3rem;
+    }
+    
+    .hero-sub-heading {
+        font-size: 2rem;
+        margin-top: 1.5rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+    nav .logo {
+        font-size: 2rem;
+    }
+
+    .hero-heading {
+        font-size: 4rem;
+    }
+    
+    .hero-sub-heading {
+        font-size: 2.5rem;
+        margin-top: 1.5rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    .hero-heading {
+        font-size: 5rem;
+    }
+    
+    .hero-sub-heading {
+        font-size: 3rem;
+        margin-top: 1.5rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    .hero-heading {
+        font-size: 6rem;
+    }
+    
+    .hero-sub-heading {
+        font-size: 4rem;
+        margin-top: 1.5rem;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+    .hero-heading {
+        font-size: 7rem;
+    }
+    
+    .hero-sub-heading {
+        font-size: 5rem;
+        margin-top: 1.5rem;
+    }
+}
+
