@@ -13,10 +13,14 @@ cart_button.addEventListener("click", () => {
 	}
 });
 
-let favorites = [];
-localStorage.setItem("favorites", JSON.stringify(favorites));
-let cart = [];
-localStorage.setItem("cart", JSON.stringify(cart));
+let cart,favorites,products_list;
+
+products_list = [];
+localStorage.setItem("products", JSON.stringify(products_list));
+
+function findProduct(id) {
+	return products_list.find((product) => product.id == id);
+}
 
 function addButtonListeners(element, type) {
 	if (type === "f") {
@@ -47,6 +51,7 @@ function addButtonListeners(element, type) {
 			product = findProduct(id)
 			
 			if (product != -1){
+				// updateLocalStorageArray(product,"cart","push")
 				cart.push(id);
 				localStorage.setItem("cart", JSON.stringify(cart));
 				addCartItem(product);
@@ -93,8 +98,6 @@ function updateCount(type) {
 	return count
 }
 
-let product_list = [];
-
 function addCard(product) {
 	let card = document.createElement("div");
 	card.classList.add("product-card");
@@ -124,19 +127,41 @@ function addCartItem(product) {
 }
 
 function populateCards(){
-	product_list.forEach((product) => {
+	products_list.forEach((product) => {
 		addCard(product);
 	});
 }
 
+function populateCart(list){
+	cart.forEach((id) => {
+		list.forEach((product) => {
+			if(product.id == id){
+				addCartItem(product)
+			}
+		})
+	})
+}
 
-product_list.push(new Product("11","MSI","250","lorem ipsum","Laptops","assets/images/laptop.png"))
-product_list.push(new Product("12","HP","250","lorem ipsum","Laptops","assets/images/laptop.png"))
-product_list.push(new Product("13","APPLE","250","lorem ipsum","Laptops","assets/images/laptop.png"))
+
+products_list.push(new Product("11","MSI","250","lorem ipsum","Laptops","assets/images/laptop.png"))
+products_list.push(new Product("12","HP","250","lorem ipsum","Laptops","assets/images/laptop.png"))
+products_list.push(new Product("13","APPLE","250","lorem ipsum","Laptops","assets/images/laptop.png"))
 populateCards()
 
 
-function findProduct(id) {
-	return product_list.find((product) => product.id == id);
+
+
+if(localStorage.getItem("favorites") === null){
+	let favorites = [];
+	localStorage.setItem("favorites", JSON.stringify(favorites));
 }
 
+if(localStorage.getItem("cart") === null){
+	let cart = [];
+	localStorage.setItem("cart", JSON.stringify(cart));
+}
+else{
+	cart = JSON.parse(localStorage.getItem("cart"))
+	populateCart(products_list)
+	updateCount("c")
+}
