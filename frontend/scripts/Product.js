@@ -1,5 +1,6 @@
 class Product {
-    constructor(id,name,price,description,category,image){
+
+    constructor(id = "",name = "",price = "",description = "",category = "",image = ""){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -35,7 +36,16 @@ class Product {
                 `
     }
 
-    toString(){
-        console.log("id: " + this.id, " name: " + this.name)
+    toCartRowContent(){
+        return `<div class="cart-img">
+                    <img src="${this.image}" alt="product image">
+                </div>
+                <div class="cart-details">
+                    <div class="name">${this.name}</div>
+                    <div class="price">$${this.price} USD</div>
+                </div>
+                <div class="cart-actions">
+                    <img class="remove-from-cart" id="${this.id}" src="assets/icons/black/delete.svg" alt="">
+                </div>`
     }
 }
