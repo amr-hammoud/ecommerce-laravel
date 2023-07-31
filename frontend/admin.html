@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <link rel="stylesheet" href="styles/style.css">
     <title>Laptops King</title>
 </head>
+
 <body>
+
     <head>
         <nav>
             <div class="main flex color-white bg-color-black">
@@ -24,15 +27,48 @@
                 <a href="login.html" class="account-tab-item">Login</a>
             </div>
             <div class="admin-popup" id="admin-popup">
-                
+
             </div>
         </nav>
     </head>
     <main>
         <section id="admin-products" class="admin-products-section">
         </section>
+        <div class="create-product-container" id="create-product-container">
+            <div class="create-product-close" id="create-product-close"></div>
+            <div class="create-product-popup">
+
+                <div class="create-product-title">add product</div>
+                    <div class="create-product-input-container">
+                        <label class="create-product-label" for="create-product-name">Name</label>
+                        <input type="text" class="create-product-input" id="create-product-name" name="create-product-name" />
+                    </div>
+                    <div class="create-product-input-container">
+                        <label class="create-product-label" for="create-product-price">Price</label>
+                        <input type="number" class="create-product-input" id="create-product-price" name="create-product-price" />
+                    </div>
+                    <div class="create-product-input-container">
+                        <label class="create-product-label" for="create-product-description">Description</label>
+                        <input type="text" class="create-product-input" id="create-product-description" name="create-product-description" />
+                    </div>
+                    <div class="create-product-input-container">
+                        <label class="create-product-label" for="create-product-image">Image
+                        <input type="file" class="create-product-input" id="create-product-image" name="create-product-image" />
+                        </label>
+                    </div>
+                <div class="create-product-buttons-group">
+                    <button class="create-product-button" id="create-product-button-create">
+                        Create
+                    </button>
+                    <button class="cancel-create-product-button" id="create-product-button-cancel">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
     </main>
     <script src="scripts/Product.js"></script>
     <script src="scripts/script.js"></script>
 </body>
+
 </html>
