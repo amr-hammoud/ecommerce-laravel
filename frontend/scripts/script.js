@@ -6,8 +6,12 @@ account_button.addEventListener("click", () => {
 	account_tab.classList.toggle("show");
 });
 
+// User
 let cart, favorites, products_list;
 let cart_tab;
+
+// Admin
+let add_button, create_container;
 let confirmation_container, confirmation_delete, confirmation_cancel;
 
 products_list = [];
@@ -251,14 +255,24 @@ if(currentUrl.search("index") != -1){
 
 if(currentUrl.search("admin") != -1){
 	populateCards("admin");
+	add_button = document.getElementById("add-button")
+	create_container = document.getElementById("create-product-container");
 	confirmation_container = document.getElementById("confirmation-container");
-
 	confirmation_delete = document.getElementById("confirmation-button-delete");
 	confirmation_cancel = document.getElementById("confirmation-button-cancel");
 
-	const popup_close = document.getElementById("popup-close");
-	popup_close.addEventListener("click", () => {
+	const confirmation_close = document.getElementById("popup-close-confirmation");
+	confirmation_close.addEventListener("click", () => {
 		confirmation_container.classList.remove("confirmation-container-show")
+	})
+
+	const create_product_close = document.getElementById("create-product-close");
+	create_product_close.addEventListener("click", () => {
+		create_container.classList.remove("create-product-container-show")
+	})
+
+	add_button.addEventListener("click", () => {
+		create_container.classList.toggle("create-product-container-show")
 	})
 }
 
