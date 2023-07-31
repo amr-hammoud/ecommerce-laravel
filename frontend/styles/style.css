@@ -267,6 +267,15 @@ nav .tab:active {
 
 /* Product Card */
 
+.products-section {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 30px 50px;
+    max-width: 1500px;
+    justify-content: center;
+    margin: auto;
+}
+
 .product-card {
     margin: 1rem;
     background-color: var(--antiflash-white);
@@ -275,6 +284,23 @@ nav .tab:active {
     border-radius: 20px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
     position: relative;
+    flex-grow: 1;
+}
+
+@media only screen and (max-width: 670px) {
+
+    .product-card {
+        max-width: 400px;
+    }
+
+}
+
+@media only screen and (min-width: 670px) {
+
+    .product-card {
+        max-width: 300px;
+    }
+
 }
 
 .card-face {

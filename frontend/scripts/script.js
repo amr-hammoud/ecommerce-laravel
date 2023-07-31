@@ -181,6 +181,26 @@ products_list.push(
 		"assets/images/laptop.png"
 	)
 );
+products_list.push(
+	new Product(
+		"14",
+		"APPLE",
+		"250",
+		"lorem ipsum",
+		"Laptops",
+		"assets/images/laptop.png"
+	)
+);
+products_list.push(
+	new Product(
+		"15",
+		"APPLE",
+		"250",
+		"lorem ipsum",
+		"Laptops",
+		"assets/images/laptop.png"
+	)
+);
 
 if(currentUrl.search("index") != -1){
 	populateCards();
