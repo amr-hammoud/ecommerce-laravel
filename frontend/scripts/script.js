@@ -48,7 +48,6 @@ function addButtonListeners(element, type) {
 	}
 	
 	else if (type === "c") {
-
 		element.addEventListener("click", (e) => {
 			const id = e.target.parentElement.id;
 			product = findProduct(id);
@@ -75,6 +74,20 @@ function addButtonListeners(element, type) {
 					cart_tab = document.getElementById("cart-tab")
 					cart_tab.classList.remove("show");
 				}
+			}
+		});
+	}
+
+	else if (type === "dp") {
+		element.addEventListener("click", (e) => {
+			const id = e.target.id;
+			product = findProduct(id);
+			const index = products_list.indexOf(product);
+			console.log(index);
+			if (index != -1) {
+				products_list.splice(index, 1);
+				localStorage.setItem("products", JSON.stringify(products_list));
+				e.srcElement.parentElement.parentElement.parentElement.remove()
 			}
 		});
 	}
@@ -130,8 +143,9 @@ function addAdminProduct(product) {
 	const edit_product = row.querySelector(".edit-product");
 	const delete_product = row.querySelector(".delete-product");
 
-	// TODO configure buttons
-	// addButtonListeners(remove_from_cart, "dc");
+
+	addButtonListeners(edit_product, "e");
+	addButtonListeners(delete_product, "dp");
 
 	let products_container = document.getElementById("admin-products");
 	products_container.appendChild(row);
@@ -225,7 +239,6 @@ if(currentUrl.search("index") != -1){
 }
 
 if(currentUrl.search("admin") != -1){
-	console.log(products_list);
 	populateCards("admin");
 }
 
