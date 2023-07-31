@@ -28,8 +28,8 @@ class Product {
                         </div>
                     </div>
                     <div class="face-actions flex justify-end gap-1" id="${this.id}">
-                        <img class="add-to-favorites" src="assets/icons/black/heart_plus.svg" alt="favorites">
-                        <img class="add-to-cart" src="assets/icons/black/add_shopping_cart.svg" alt="cart">
+                        <img class="add-to-favorites" src="assets/icons/black/f.svg" alt="favorites">
+                        <img class="add-to-cart" src="assets/icons/black/c.svg" alt="cart">
                     </div>
                 `
     }
@@ -43,13 +43,12 @@ class Product {
                     <div class="price">$${this.price} USD</div>
                 </div>
                 <div class="cart-actions">
-                    <img class="remove-from-cart" id="${this.id}" src="assets/icons/black/delete.svg" alt="">
+                    <img class="remove-from-cart" id="${this.id}" src="assets/icons/black/dc.svg" alt="">
                 </div>`
     }
 
     toAdminRowContent(){
-        return `<div class="product-row">
-                    <div class="row-group">
+        return `<div class="row-group">
                         <div class="product-img">
                             <img src="${this.image}" alt="product image">
                         </div>
@@ -61,10 +60,9 @@ class Product {
                     </div>
                     <div>
                         <div class="product-actions">
-                            <img class="edit-product" id="${this.id}" src="assets/icons/black/edit.svg" alt="">
-                            <img class="delete-product" id="${this.id}" src="assets/icons/black/delete.svg" alt="">
+                            <img class="edit-product" id="${this.id}" src="assets/icons/black/e.svg" alt="">
+                            <img class="delete-product" id="${this.id}" src="assets/icons/black/dc.svg" alt="">
                         </div>
-                    </div>
-                </div>`
+                    </div>`
     }
 }

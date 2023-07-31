@@ -32,28 +32,26 @@ function findProduct(id) {
 }
 
 function addButtonListeners(element, type) {
+
+	element.addEventListener("mouseover", () => {
+		element.src = `assets/icons/filled/${type}.svg`;
+	});
+
+	element.addEventListener("mouseout", () => {
+		element.src = `assets/icons/black/${type}.svg`;
+	});
+
+
+	
 	if (type === "f") {
-		element.addEventListener("mouseover", () => {
-			element.src = "assets/icons/filled/favorite.svg";
-		});
-
-		element.addEventListener("mouseout", () => {
-			element.src = "assets/icons/black/heart_plus.svg";
-		});
-
 		element.addEventListener("click", (e) => {
 			favorites.push(e.target.parentElement.id);
 			localStorage.setItem("favorites", JSON.stringify(favorites));
 			updateCount(type); // TODO: replace with addItem to list
 		});
-	} else if (type === "c") {
-		element.addEventListener("mouseover", () => {
-			element.src = "assets/icons/filled/shopping_cart.svg";
-		});
-
-		element.addEventListener("mouseout", () => {
-			element.src = "assets/icons/black/add_shopping_cart.svg";
-		});
+	}
+	
+	else if (type === "c") {
 
 		element.addEventListener("click", (e) => {
 			const id = e.target.parentElement.id;
@@ -68,13 +66,6 @@ function addButtonListeners(element, type) {
 			}
 		});
 	} else if (type === "dc") {
-		element.addEventListener("mouseover", () => {
-			element.src = "assets/icons/filled/delete.svg";
-		});
-
-		element.addEventListener("mouseout", () => {
-			element.src = "assets/icons/black/delete.svg";
-		});
 
 		element.addEventListener("click", (e) => {
 			const id = e.target.id;
