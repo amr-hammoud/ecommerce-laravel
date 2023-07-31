@@ -756,16 +756,6 @@ nav .tab:active {
     z-index: 4;
 }
 
-.popup-close-close {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 5;
-}
-
 .create-product-container-show {
     display: flex !important;
 }
@@ -898,7 +888,7 @@ nav .tab:active {
     z-index: 4;
 }
 
-.popup-close-close {
+.popup-close {
     position: fixed;
     top: 0;
     right: 0;

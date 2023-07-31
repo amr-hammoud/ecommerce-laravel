@@ -8,6 +8,7 @@ account_button.addEventListener("click", () => {
 
 let cart, favorites, products_list;
 let cart_tab;
+let confirmation_container, confirmation_delete, confirmation_cancel;
 
 products_list = [];
 localStorage.setItem("products", JSON.stringify(products_list));
@@ -80,15 +81,25 @@ function addButtonListeners(element, type) {
 
 	else if (type === "dp") {
 		element.addEventListener("click", (e) => {
-			const id = e.target.id;
-			product = findProduct(id);
-			const index = products_list.indexOf(product);
-			console.log(index);
-			if (index != -1) {
-				products_list.splice(index, 1);
-				localStorage.setItem("products", JSON.stringify(products_list));
-				e.srcElement.parentElement.parentElement.parentElement.remove()
-			}
+
+			confirmation_container.classList.add("confirmation-container-show");
+			
+			confirmation_delete.addEventListener("click", () => {
+				const id = e.target.id;
+				product = findProduct(id);
+				const index = products_list.indexOf(product);
+				console.log(index);
+				if (index != -1) {
+					products_list.splice(index, 1);
+					localStorage.setItem("products", JSON.stringify(products_list));
+					e.srcElement.parentElement.parentElement.parentElement.remove()
+					confirmation_container.classList.remove("confirmation-container-show");
+				}
+			})
+
+			confirmation_cancel.addEventListener("click", () => {
+				confirmation_container.classList.remove("confirmation-container-show");
+			})
 		});
 	}
 }
@@ -240,6 +251,15 @@ if(currentUrl.search("index") != -1){
 
 if(currentUrl.search("admin") != -1){
 	populateCards("admin");
+	confirmation_container = document.getElementById("confirmation-container");
+
+	confirmation_delete = document.getElementById("confirmation-button-delete");
+	confirmation_cancel = document.getElementById("confirmation-button-cancel");
+
+	const popup_close = document.getElementById("popup-close");
+	popup_close.addEventListener("click", () => {
+		confirmation_container.classList.remove("confirmation-container-show")
+	})
 }
 
 
