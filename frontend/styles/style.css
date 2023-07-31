@@ -576,3 +576,163 @@ nav .tab:active {
 .cart-actions img {
     cursor: pointer;
 }
+
+
+.admin-products-section {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 100px 30px;
+    max-width: 1500px;
+    justify-content: center;
+    margin: auto;
+}
+
+
+.product-row {
+    margin: 10px;
+    padding: 10px 0px;
+    height: 100px;
+    width: 100%;
+    max-width: 900px;
+    min-width: 250px;
+    border-radius: 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--antiflash-white);
+}
+
+.row-group {
+    height: 100%;
+    width: 90%;
+    /* padding: 15px 0px; */
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.product-img {
+    height: 100%;
+    width: auto;
+    min-width: 100px;
+    aspect-ratio: 1;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.product-details {
+    width: 100%;
+    max-width: 700px;
+    padding: 5px 5px 5px 10px;
+}
+
+@media only screen and (max-width: 550px) {
+
+    .product-row {
+        padding: 10px 10px;
+    }
+
+    .row-group {
+        width: 80%;
+    }
+
+    .product-img {
+        min-width: 60px;
+    }
+
+    .product-details {
+        width: 80%;
+    }
+
+    .product-actions {
+        flex-flow: column;
+    }
+
+}
+
+@media only screen and (min-width: 550px) {
+
+    .product-row {
+        padding: 10px 10px;
+    }
+
+    .row-group {
+        width: 85%;
+    }
+
+    .product-img {
+        min-width: 40px;
+    }
+
+    .product-details {
+        width: 80%;
+    }
+
+}
+
+@media only screen and (min-width: 670px) {
+
+    .product-row {
+        padding: 10px 10px;
+    }
+
+    .row-group {
+        width: 90%;
+    }
+
+    .product-img {
+        max-height: 100%;
+        min-width: 80px;
+    }
+
+    .product-details {
+        width: 80%;
+    }
+
+}
+
+.product-details .name {
+    font-family: "Cairo";
+    font-weight: 800;
+    color: var(--prussian-blue);
+    font-size: 1.6rem;
+    line-height: 100%;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-details .details {
+    font-family: "Cairo";
+    width: 100%;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-details .price {
+    font-family: "Cairo";
+    font-weight: 500;
+    color: var(--bice-blue);
+    font-size: 0.9rem;
+}
+
+.product-actions {
+    display: flex;
+    gap: 15px;
+}
+
+
+.product-actions img {
+    cursor: pointer;
+}
