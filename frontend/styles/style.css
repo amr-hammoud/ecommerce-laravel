@@ -603,6 +603,10 @@ nav .tab:active {
     background-color: var(--antiflash-white);
 }
 
+.product-row:hover {
+    background-color: rgb(215, 215, 215);
+}
+
 .row-group {
     height: 100%;
     width: 90%;

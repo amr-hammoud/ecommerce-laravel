@@ -6,10 +6,6 @@ account_button.addEventListener("click", () => {
 	account_tab.classList.toggle("show");
 });
 
-if(currentUrl.search("index") != -1){
-	addCartListener()
-}
-
 let cart, favorites, products_list;
 let cart_tab;
 
@@ -141,10 +137,17 @@ function addAdminProduct(product) {
 	products_container.appendChild(row);
 }
 
-function populateCards() {
-	products_list.forEach((product) => {
-		addCard(product);
-	});
+function populateCards(type) {
+	if(type === "admin"){
+		products_list.forEach((product) => {
+			addAdminProduct(product);
+		});
+	}
+	else if(type === "user"){
+		products_list.forEach((product) => {
+			addCard(product);
+		});
+	}
 }
 
 function populateCart(list) {
@@ -204,7 +207,8 @@ products_list.push(
 );
 
 if(currentUrl.search("index") != -1){
-	populateCards();
+	populateCards("user");
+	addCartListener()
 	if (localStorage.getItem("favorites") === null) {
 		let favorites = [];
 		localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -219,5 +223,12 @@ if(currentUrl.search("index") != -1){
 		updateCount("c");
 	}
 }
+
+if(currentUrl.search("admin") != -1){
+	console.log(products_list);
+	populateCards("admin");
+}
+
+
 
 
