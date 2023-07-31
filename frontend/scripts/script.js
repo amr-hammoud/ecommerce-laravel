@@ -123,16 +123,31 @@ function addCard(product) {
 }
 
 function addCartItem(product) {
-	let card = document.createElement("div");
-	card.classList.add("cart-tab-item");
-	card.innerHTML = product.toUserRowContent();
+	let row = document.createElement("div");
+	row.classList.add("cart-tab-item");
+	row.innerHTML = product.toUserRowContent();
 
-	const remove_from_cart = card.querySelector(".remove-from-cart");
+	const remove_from_cart = row.querySelector(".remove-from-cart");
 
 	addButtonListeners(remove_from_cart, "dc");
 
 	let cart_container = document.getElementById("cart-tab");
-	cart_container.appendChild(card);
+	cart_container.appendChild(row);
+}
+
+function addAdminProduct(product) {
+	let row = document.createElement("div");
+	row.classList.add("product-row");
+	row.innerHTML = product.toAdminRowContent();
+
+	const edit_product = row.querySelector(".edit-product");
+	const delete_product = row.querySelector(".delete-product");
+
+	// TODO configure buttons
+	// addButtonListeners(remove_from_cart, "dc");
+
+	let products_container = document.getElementById("admin-products");
+	products_container.appendChild(row);
 }
 
 function populateCards() {
@@ -157,7 +172,6 @@ products_list.push(
 		"MSI",
 		"250",
 		"lorem ipsum",
-		"Laptops",
 		"assets/images/laptop.png"
 	)
 );
@@ -167,7 +181,6 @@ products_list.push(
 		"HP",
 		"250",
 		"lorem ipsum",
-		"Laptops",
 		"assets/images/laptop.png"
 	)
 );
@@ -177,7 +190,6 @@ products_list.push(
 		"APPLE",
 		"250",
 		"lorem ipsum",
-		"Laptops",
 		"assets/images/laptop.png"
 	)
 );
@@ -187,7 +199,6 @@ products_list.push(
 		"APPLE",
 		"250",
 		"lorem ipsum",
-		"Laptops",
 		"assets/images/laptop.png"
 	)
 );
@@ -197,7 +208,6 @@ products_list.push(
 		"APPLE",
 		"250",
 		"lorem ipsum",
-		"Laptops",
 		"assets/images/laptop.png"
 	)
 );

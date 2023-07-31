@@ -1,11 +1,10 @@
 class Product {
 
-    constructor(id = "",name = "",price = "",description = "",category = "",image = ""){
+    constructor(id = "",name = "",price = "",description = "",image = ""){
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.category = category;
         this.image = image;
     }
 
@@ -16,7 +15,6 @@ class Product {
                             <img src="${this.image}" alt="product image">
                         </div>
                         <div class="face-details">
-                            <div class="category">${this.category}</div>
                             <div class="name">${this.name}</div>
                             <div class="price">$${this.price} USD</div>
                         </div>
@@ -46,6 +44,27 @@ class Product {
                 </div>
                 <div class="cart-actions">
                     <img class="remove-from-cart" id="${this.id}" src="assets/icons/black/delete.svg" alt="">
+                </div>`
+    }
+
+    toAdminRowContent(){
+        return `<div class="product-row">
+                    <div class="row-group">
+                        <div class="product-img">
+                            <img src="${this.image}" alt="product image">
+                        </div>
+                        <div class="product-details">
+                            <div class="name">${this.name}</div>
+                            <div class="details">${this.description}</div>
+                            <div class="price">$${this.price} USD</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="product-actions">
+                            <img class="edit-product" id="${this.id}" src="assets/icons/black/edit.svg" alt="">
+                            <img class="delete-product" id="${this.id}" src="assets/icons/black/delete.svg" alt="">
+                        </div>
+                    </div>
                 </div>`
     }
 }
