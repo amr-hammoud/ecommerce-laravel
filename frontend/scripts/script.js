@@ -1,5 +1,4 @@
 const currentUrl = window.location.href
-console.log(currentUrl);
 
 const account_button = document.getElementById("account-button");
 const account_tab = document.getElementById("account-tab");
@@ -182,18 +181,22 @@ products_list.push(
 		"assets/images/laptop.png"
 	)
 );
-populateCards();
 
-if (localStorage.getItem("favorites") === null) {
-	let favorites = [];
-	localStorage.setItem("favorites", JSON.stringify(favorites));
+if(currentUrl.search("index") != -1){
+	populateCards();
+	if (localStorage.getItem("favorites") === null) {
+		let favorites = [];
+		localStorage.setItem("favorites", JSON.stringify(favorites));
+	}
+	
+	if (localStorage.getItem("cart") === null) {
+		let cart = [];
+		localStorage.setItem("cart", JSON.stringify(cart));
+	} else {
+		cart = JSON.parse(localStorage.getItem("cart"));
+		populateCart(products_list);
+		updateCount("c");
+	}
 }
 
-if (localStorage.getItem("cart") === null) {
-	let cart = [];
-	localStorage.setItem("cart", JSON.stringify(cart));
-} else {
-	cart = JSON.parse(localStorage.getItem("cart"));
-	populateCart(products_list);
-	updateCount("c");
-}
+
