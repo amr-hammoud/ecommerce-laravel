@@ -54,8 +54,8 @@ class Product {
                         </div>
                         <div class="product-details">
                             <div class="name">${this.name}</div>
-                            <div class="details">${this.description}</div>
-                            <div class="price">$${this.price} USD</div>
+                            <div class="description">${this.description}</div>
+                            <div class="price">$<span id=price>${this.price}</span> USD</div>
                         </div>
                     </div>
                     <div>

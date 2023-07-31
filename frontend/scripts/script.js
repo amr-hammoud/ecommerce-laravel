@@ -11,11 +11,52 @@ let cart, favorites, products_list;
 let cart_tab;
 
 // Admin
-let add_button, create_container;
+let add_button, create_container, container_title, container_button_main, container_button_cancel;
+let name_input, price_input, description_input, image_input;
 let confirmation_container, confirmation_delete, confirmation_cancel;
 
 products_list = [];
 localStorage.setItem("products", JSON.stringify(products_list));
+
+
+if(currentUrl.search("admin") != -1){
+	add_button = document.getElementById("add-button")
+	create_container = document.getElementById("create-product-container");
+	container_title = document.getElementById("popup-title");
+	container_button_main = document.getElementById("create-product-button-create");
+	container_button_cancel = document.getElementById("create-product-button-cancel");
+
+	confirmation_container = document.getElementById("confirmation-container");
+	confirmation_delete = document.getElementById("confirmation-button-delete");
+	confirmation_cancel = document.getElementById("confirmation-button-cancel");
+
+	name_input = document.getElementById("create-product-name")
+	price_input = document.getElementById("create-product-price")
+	description_input = document.getElementById("create-product-description")
+	image_input = document.getElementById("create-product-image");
+
+	const confirmation_close = document.getElementById("popup-close-confirmation");
+	confirmation_close.addEventListener("click", () => {
+		confirmation_container.classList.remove("confirmation-container-show")
+	})
+
+	const create_product_close = document.getElementById("create-product-close");
+	create_product_close.addEventListener("click", () => {
+		create_container.classList.remove("create-product-container-show")
+	})
+
+	container_button_cancel.addEventListener("click", () => {
+		create_container.classList.remove("create-product-container-show")
+	})
+
+	add_button.addEventListener("click", () => {
+		create_container.classList.toggle("create-product-container-show")
+		container_title.innerText = "add product"
+		container_button_main.innerText = "create"
+	})
+}
+
+
 
 function addCartListener(){
 	const cart_button = document.getElementById("cart-button");
@@ -105,6 +146,19 @@ function addButtonListeners(element, type) {
 				confirmation_container.classList.remove("confirmation-container-show");
 			})
 		});
+	}
+
+	else if(type === "e"){
+		element.addEventListener("click", (e) => {
+			container_title.innerText = "edit product"
+			container_button_main.innerText = "update"
+
+			name_input.value = e.srcElement.parentElement.parentElement.parentElement.querySelector(".name").innerText
+			price_input.value = e.srcElement.parentElement.parentElement.parentElement.querySelector("#price").innerText
+			description_input.value = e.srcElement.parentElement.parentElement.parentElement.querySelector(".description").innerText
+
+			create_container.classList.add("create-product-container-show")
+		})
 	}
 }
 
@@ -255,25 +309,6 @@ if(currentUrl.search("index") != -1){
 
 if(currentUrl.search("admin") != -1){
 	populateCards("admin");
-	add_button = document.getElementById("add-button")
-	create_container = document.getElementById("create-product-container");
-	confirmation_container = document.getElementById("confirmation-container");
-	confirmation_delete = document.getElementById("confirmation-button-delete");
-	confirmation_cancel = document.getElementById("confirmation-button-cancel");
-
-	const confirmation_close = document.getElementById("popup-close-confirmation");
-	confirmation_close.addEventListener("click", () => {
-		confirmation_container.classList.remove("confirmation-container-show")
-	})
-
-	const create_product_close = document.getElementById("create-product-close");
-	create_product_close.addEventListener("click", () => {
-		create_container.classList.remove("create-product-container-show")
-	})
-
-	add_button.addEventListener("click", () => {
-		create_container.classList.toggle("create-product-container-show")
-	})
 }
 
 
