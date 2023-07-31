@@ -1,22 +1,32 @@
+const currentUrl = window.location.href
+console.log(currentUrl);
+
 const account_button = document.getElementById("account-button");
 const account_tab = document.getElementById("account-tab");
 account_button.addEventListener("click", () => {
 	account_tab.classList.toggle("show");
 });
 
-const cart_button = document.getElementById("cart-button");
-const cart_tab = document.getElementById("cart-tab");
-cart_button.addEventListener("click", () => {
+if(currentUrl.search("index") != -1){
+	addCartListener()
+}
+
+let cart, favorites, products_list;
+let cart_tab;
+
+products_list = [];
+localStorage.setItem("products", JSON.stringify(products_list));
+
+function addCartListener(){
+	const cart_button = document.getElementById("cart-button");
+	const cart_tab = document.getElementById("cart-tab");
+	cart_button.addEventListener("click", () => {
 	const count = cart_button.querySelector("span").innerText;
 	if (count != "0") {
 		cart_tab.classList.toggle("show");
 	}
 });
-
-let cart, favorites, products_list;
-
-products_list = [];
-localStorage.setItem("products", JSON.stringify(products_list));
+}
 
 function findProduct(id) {
 	return products_list.find((product) => product.id == id);
@@ -76,6 +86,7 @@ function addButtonListeners(element, type) {
 				e.srcElement.parentElement.parentElement.remove();
 				let count = updateCount(type);
 				if (count == 0) {
+					cart_tab = document.getElementById("cart-tab")
 					cart_tab.classList.remove("show");
 				}
 			}
