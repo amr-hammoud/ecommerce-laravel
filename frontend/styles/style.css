@@ -756,7 +756,7 @@ nav .tab:active {
     z-index: 4;
 }
 
-.create-product-close {
+.popup-close-close {
     position: fixed;
     top: 0;
     right: 0;
@@ -878,3 +878,83 @@ nav .tab:active {
 .cancel-create-product-button:active {
     background-color: rgba(36, 86, 122, 0.356);
 }
+
+
+
+/* CONFIRMATION POPUP */
+
+.confirmation-container {
+    background-color: rgba(2, 2, 2, 0.528);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px 15px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+.popup-close-close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+.confirmation-container-show {
+    display: flex !important;
+}
+
+.confirmation-popup {
+    background-color: var(--antiflash-white);
+    height: 200px;
+    width: 100%;
+    min-width: 250px;
+    max-width: 550px;
+    border-radius: 8px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 15px;
+    z-index: 6;
+}
+
+.confirmation-button {
+    padding: 5px 10px;
+    border-radius: 12px;
+    width: 100%;
+    text-align: center;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.button-delete {
+    color: var(--antiflash-white);
+    background-color: #ed4444;
+}
+.button-delete:hover {
+    background-color: #de3232;
+}
+.button-delete:active {
+    background-color: #c81313;
+}
+
+.button-cancel {
+    color: var(--antiflash-white);
+    background-color: var(--medium-grey);
+}
+.button-cancel:hover {
+    background-color: #707070;
+}
+.button-cancel:active {
+    background-color: #606060;
+}
+
