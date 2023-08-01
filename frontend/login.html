@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/utility.css">
     <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Laptops King</title>
 </head>
 <body>
@@ -31,11 +32,11 @@
             <h1 class="blackpast color-white form-heading">login</h1>
             <div class="form">
                 <div class="input-group">
-                    <label for="email">Email</label>
+                    <label for="email">Email <span class="error" id="login-email-error"></span></label>
                     <input type="email" name="email" id="login-email" placeholder="Email">
                 </div>
                 <div class="input-group">
-                    <label for="password">Password</label>
+                    <label for="password">Password <span class="error" id="login-password-error"></span></label>
                     <input type="password" name="password" id="login-password" placeholder="Password">
                 </div>
                 <div class="input-group flex">
@@ -51,7 +52,6 @@
             </div>
         </section>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="scripts/script.js"></script>
+    <script src="scripts/auth.js"></script>
 </body>
 </html>

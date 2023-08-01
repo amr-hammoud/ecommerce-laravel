@@ -479,6 +479,10 @@ nav .tab:active {
     border: none;
 }
 
+.input-group input[type="checkbox"] + label{
+    cursor: pointer;
+}
+
 .input-group input:focus {
     outline: none;
     border: none;

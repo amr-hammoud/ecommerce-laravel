@@ -134,6 +134,10 @@ html {
 
 /* Colors */
 
+.error {
+    color: red;
+}
+
 .color-white {
     color: var(--white);
 }
