@@ -1,6 +1,7 @@
-if (localStorage.getItem("user_id") === null) {
+if (localStorage.getItem("token") === null) {
 	window.location.href = "login.html";
 } else {
+	const token = localStorage.getItem("token")
 	const currentUrl = window.location.href;
 	const base_url = "http://127.0.0.1:8000/api/";
 
@@ -25,6 +26,26 @@ if (localStorage.getItem("user_id") === null) {
 
 	products_list = [];
 	localStorage.setItem("products", JSON.stringify(products_list));
+
+	// async function logout(){
+
+	// 	const config = {
+	// 		headers: { Authorization: `Bearer ${token}` },
+	// 	};
+
+	// 	const url = base_url + "user/logout";
+	// 	try {
+	// 		const response =  await axios.post(url,config);
+	// 		localStorage.removeItem("token")
+	// 		localStorage.removeItem("user_id")
+	// 		window.location.reload
+	// 		console.log(response);
+	// 	} catch (error) {
+	// 		console.log("Error from GET API: " + error);
+	// 	}
+	// }
+
+	// logout()
 
 	if (currentUrl.search("admin") != -1) {
 		add_button = document.getElementById("add-button");
@@ -82,9 +103,14 @@ if (localStorage.getItem("user_id") === null) {
 	}
 
 	async function getProducts() {
+
+		const config = {
+			headers: { Authorization: `Bearer ${token}` },
+		};
+
 		const url = base_url + "product/";
 		try {
-			return await axios(url);
+			return await axios.get(url,config);
 		} catch (error) {
 			console.log("Error from GET API: " + error);
 		}
@@ -118,7 +144,7 @@ if (localStorage.getItem("user_id") === null) {
 			element.addEventListener("click", (e) => {
 				favorites.push(e.target.parentElement.id);
 				localStorage.setItem("favorites", JSON.stringify(favorites));
-				updateCount(type); // TODO: replace with addItem to list
+				updateCount(type);
 			});
 		} else if (type === "c") {
 			element.addEventListener("click", (e) => {
@@ -126,7 +152,6 @@ if (localStorage.getItem("user_id") === null) {
 				product = findProduct(id);
 
 				if (product != -1) {
-					// updateLocalStorageArray(product,"cart","push")
 					cart.push(id);
 					localStorage.setItem("cart", JSON.stringify(cart));
 					addCartItem(product);
@@ -260,8 +285,6 @@ if (localStorage.getItem("user_id") === null) {
 	async function populateCards(type) {
 		const response = await getProducts();
 		const myproducts = response.data.products;
-
-		console.log(myproducts);
 
 		myproducts.forEach((product) => {
 			products_list.push(
