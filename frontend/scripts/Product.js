@@ -12,7 +12,7 @@ class Product {
         return `
                     <div class="card-face" id="card-face">
                         <div class="face-img">
-                            <img src="${this.image}" alt="product image">
+                            <img src="data:image/png;base64,${this.image}" alt="product image">
                         </div>
                         <div class="face-details">
                             <div class="name">${this.name}</div>

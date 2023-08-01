@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api');
+    // }
 
     public function get($id = null){
 
@@ -31,17 +31,22 @@ class ProductController extends Controller
             $product = new Product;
         }else{
             $product = Product::find($id);
+            
         }
 
         $request->validate([
             'name' => 'required|string|max:255',
             'description' =>'string',
-            'price' => 'required|string|max:255'
+            'price' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+
+        $image_base64 = base64_encode(file_get_contents($request->file('image')->path()));
 
         $product->name = $request->name ? $request->name : $product->name;
         $product->description = $request->description ? $request->description : $product->description;
         $product->price = $request->price ? $request->price : $product->price;
+        $product->image = $image_base64;
         $product->save();
 
         return response()->json([
