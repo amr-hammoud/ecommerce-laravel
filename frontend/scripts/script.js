@@ -1,4 +1,5 @@
-const currentUrl = window.location.href
+const currentUrl = window.location.href;
+const base_url = "http://127.0.0.1:8000/api/";
 
 const account_button = document.getElementById("account-button");
 const account_tab = document.getElementById("account-tab");
@@ -14,6 +15,8 @@ let cart_tab;
 let add_button, create_container, container_title, container_button_main, container_button_cancel;
 let name_input, price_input, description_input, image_input;
 let confirmation_container, confirmation_delete, confirmation_cancel;
+
+
 
 products_list = [];
 localStorage.setItem("products", JSON.stringify(products_list));
@@ -56,7 +59,28 @@ if(currentUrl.search("admin") != -1){
 	})
 }
 
+// async function login(data){
+// 	try{
+// 		const url = base_url + "user/login"
+// 		console.log(url);
+// 		return await axios.post(
+// 			url,
+// 			data
+// 		);
+// 	}catch(error){
+//         console.log("Error from login " + error);
+//     }
+// }
 
+
+async function getProducts(){
+	const url = base_url + "product/"
+	try{
+        return await axios(url)
+    }catch(error){
+        console.log("Error from GET API: " + error);
+    }
+}
 
 function addCartListener(){
 	const cart_button = document.getElementById("cart-button");
@@ -133,7 +157,6 @@ function addButtonListeners(element, type) {
 				const id = e.target.id;
 				product = findProduct(id);
 				const index = products_list.indexOf(product);
-				console.log(index);
 				if (index != -1) {
 					products_list.splice(index, 1);
 					localStorage.setItem("products", JSON.stringify(products_list));
@@ -220,7 +243,17 @@ function addAdminProduct(product) {
 	products_container.appendChild(row);
 }
 
-function populateCards(type) {
+async function populateCards(type) {
+	const response = await getProducts()
+	const myproducts = response.data.products;
+
+	console.log(myproducts);
+
+	myproducts.forEach((product) => {
+		products_list.push(new Product(product.id,product.name,product.price,product.description,product.image))
+	})
+
+	
 	if(type === "admin"){
 		products_list.forEach((product) => {
 			addAdminProduct(product);
@@ -243,51 +276,6 @@ function populateCart(list) {
 	});
 }
 
-products_list.push(
-	new Product(
-		"11",
-		"MSI",
-		"250",
-		"lorem ipsum",
-		"assets/images/laptop.png"
-	)
-);
-products_list.push(
-	new Product(
-		"12",
-		"HP",
-		"250",
-		"lorem ipsum",
-		"assets/images/laptop.png"
-	)
-);
-products_list.push(
-	new Product(
-		"13",
-		"APPLE",
-		"250",
-		"lorem ipsum",
-		"assets/images/laptop.png"
-	)
-);
-products_list.push(
-	new Product(
-		"14",
-		"APPLE",
-		"250",
-		"lorem ipsum",
-		"assets/images/laptop.png"
-	)
-);
-products_list.push(
-	new Product(
-		"15",
-		"APPLE",
-		"250",
-		"lorem ipsum",
-		"assets/images/laptop.png"
-	)
-);
 
 if(currentUrl.search("index") != -1){
 	populateCards("user");
