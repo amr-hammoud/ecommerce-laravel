@@ -36,7 +36,7 @@ class Product {
 
     toUserRowContent(){
         return `<div class="cart-img">
-                    <img src="${this.image}" alt="product image">
+                    <img src="data:image/png;base64,${this.image}" alt="product image">
                 </div>
                 <div class="cart-details">
                     <div class="name">${this.name}</div>
@@ -50,7 +50,7 @@ class Product {
     toAdminRowContent(){
         return `<div class="row-group">
                         <div class="product-img">
-                            <img src="${this.image}" alt="product image">
+                            <img src="data:image/png;base64,${this.image}" alt="product image">
                         </div>
                         <div class="product-details">
                             <div class="name">${this.name}</div>
