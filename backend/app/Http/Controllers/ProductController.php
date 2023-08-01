@@ -34,14 +34,10 @@ class ProductController extends Controller
             
         }
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' =>'required|string',
-            'price' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
-
-        $image_base64 = base64_encode(file_get_contents($request->file('image')->path()));
+        $image_base64 =null;
+        if($request->file('image')){
+            $image_base64 = base64_encode(file_get_contents($request->file('image')->path()));
+        }
 
         $product->name = $request->name ? $request->name : $product->name;
         $product->description = $request->description ? $request->description : $product->description;

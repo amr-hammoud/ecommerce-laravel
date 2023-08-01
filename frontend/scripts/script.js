@@ -102,10 +102,9 @@ if (localStorage.getItem("token") === null) {
 			name_input.value = "";
 			price_input.value = "";
 			description_input.value = "";
-		});
-
-		container_button_main.addEventListener("click", () => {
-			addProduct();
+			container_button_main.addEventListener("click", () => {
+				addProduct();
+			});
 		});
 	}
 
@@ -140,38 +139,36 @@ if (localStorage.getItem("token") === null) {
 		let description_valid = false;
 		let image_valid = false;
 
-		if(create_product_name_input.value != ''){
+		if (create_product_name_input.value != "") {
 			name_valid = true;
-			create_product_name_error.innerText = ""
-		}else{
-			create_product_name_error.innerText = "*required"
+			create_product_name_error.innerText = "";
+		} else {
+			create_product_name_error.innerText = "*required";
 		}
 
 		let price = create_product_price_input.value;
-		if(price != '' && !isNaN(price) && price > 0){
+		if (price != "" && !isNaN(price) && price > 0) {
 			price_valid = true;
-			create_product_price_error.innerText = ""
-		}else{
-			create_product_price_error.innerText = "*Invalid number"
+			create_product_price_error.innerText = "";
+		} else {
+			create_product_price_error.innerText = "*Invalid number";
 		}
 
-		if(create_product_description_input.value != ''){
+		if (create_product_description_input.value != "") {
 			description_valid = true;
-			create_product_description_error.innerText = ""
-		}else{
-			create_product_description_error.innerText = "*required"
+			create_product_description_error.innerText = "";
+		} else {
+			create_product_description_error.innerText = "*required";
 		}
 
-		if(create_product_image_input.files[0] != null){
-			image_valid = true
-			create_product_image_error.innerText = ""
-		}else {
-			create_product_image_error.innerText = "*required"
+		if (create_product_image_input.files[0] != null) {
+			image_valid = true;
+			create_product_image_error.innerText = "";
+		} else {
+			create_product_image_error.innerText = "*required";
 		}
 
-		
-
-		if (name_valid && price_valid && image_valid) {
+		if (name_valid && price_valid && description_valid && image_valid) {
 			const config = {
 				headers: { Authorization: `Bearer ${token}` },
 			};
@@ -183,6 +180,88 @@ if (localStorage.getItem("token") === null) {
 			body.append("image", create_product_image_input.files[0]);
 
 			const url = base_url + "product/addOrUpdate";
+			try {
+				const response = await axios.post(url, body, config);
+				create_container.classList.remove(
+					"create-product-container-show"
+				);
+				name_input.value = "";
+				price_input.value = "";
+				description_input.value = "";
+				image_input.value = null;
+				populateCards("admin");
+			} catch (error) {
+				console.log("Error from GET API: " + error);
+			}
+		}
+	}
+
+	async function editProduct(id) {
+		const create_product_name_input = document.getElementById(
+			"create-product-name"
+		);
+		const create_product_name_error = document.getElementById(
+			"create-product-name-error"
+		);
+		const create_product_price_input = document.getElementById(
+			"create-product-price"
+		);
+		const create_product_price_error = document.getElementById(
+			"create-product-price-error"
+		);
+		const create_product_description_input = document.getElementById(
+			"create-product-description"
+		);
+		const create_product_description_error = document.getElementById(
+			"create-product-description-error"
+		);
+		const create_product_image_input = document.getElementById(
+			"create-product-image"
+		);
+		const create_product_image_error = document.getElementById(
+			"create-product-image-error"
+		);
+
+		let name_valid = false;
+		let price_valid = false;
+		let description_valid = false;
+		let image_valid = false;
+
+		if (create_product_name_input.value != "") {
+			name_valid = true;
+			create_product_name_error.innerText = "";
+		} else {
+			create_product_name_error.innerText = "*required";
+		}
+
+		let price = create_product_price_input.value;
+		if (price != "" && !isNaN(price) && price > 0) {
+			price_valid = true;
+			create_product_price_error.innerText = "";
+		} else {
+			create_product_price_error.innerText = "*Invalid number";
+		}
+
+		if (create_product_description_input.value != "") {
+			description_valid = true;
+			create_product_description_error.innerText = "";
+		} else {
+			create_product_description_error.innerText = "*required";
+		}
+
+
+		if (name_valid && price_valid && description_valid) {
+			const config = {
+				headers: { Authorization: `Bearer ${token}` },
+			};
+
+			const body = new FormData();
+			body.append("name", create_product_name_input.value);
+			body.append("price", create_product_price_input.value);
+			body.append("description", create_product_description_input.value);
+			body.append("image", create_product_image_input.files[0]);
+
+			const url = base_url + `product/addOrUpdate/${id}`;
 			try {
 				const response = await axios.post(url, body, config);
 				create_container.classList.remove(
@@ -317,6 +396,9 @@ if (localStorage.getItem("token") === null) {
 					).innerText;
 
 				create_container.classList.add("create-product-container-show");
+				container_button_main.addEventListener("click", () => {
+					editProduct(e.target.id);
+				});
 			});
 		}
 	}
@@ -383,7 +465,7 @@ if (localStorage.getItem("token") === null) {
 		const response = await getProducts();
 		const myproducts = response.data.products;
 
-		products_list = []
+		products_list = [];
 
 		myproducts.forEach((product) => {
 			products_list.push(
@@ -398,17 +480,14 @@ if (localStorage.getItem("token") === null) {
 		});
 
 		if (type === "admin") {
-
-			products_container = document.getElementById("admin-products")
+			products_container = document.getElementById("admin-products");
 			products_container.replaceChildren();
 
 			products_list.forEach((product) => {
 				addAdminProduct(product);
 			});
-
 		} else if (type === "user") {
-
-			products_container = document.getElementById("products")
+			products_container = document.getElementById("products");
 			products_container.replaceChildren();
 
 			products_list.forEach((product) => {
