@@ -41,7 +41,13 @@ login_button.addEventListener("click", async () => {
         if(user.data.authorization.token != null){
             localStorage.setItem("user_id",user.data.user.id);
             localStorage.setItem("token",user.data.authorization.token);
-            window.location.href = "index.html"
+
+            if(user.data.user.type === "user"){
+                window.location.href = "index.html"
+            } else if(user.data.user.type === "admin"){
+                window.location.href = "admin.html"
+            }
+
         }
         else{
             console.log("login Failed");
